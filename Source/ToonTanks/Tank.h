@@ -28,7 +28,11 @@ private:
 	class UCameraComponent* Camera;
 
 	UPROPERTY(EditAnywhere, Category = "Movement")
-	float Speed = 200.f;
+	float Speed = 500.f;
+	UPROPERTY(EditAnywhere, Category = "Movement")
+	float TurnRate = 100.f;
+
 
 	void Move(float Value);
+	void Turn(float Value);
 };
