@@ -14,10 +14,13 @@ class TOONTANKS_API ATank : public ABasePawn
 {
 	GENERATED_BODY()
 	
-		virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 public:
+	
 	ATank();
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
 
 protected:
 	// Called when the game starts or when spawned
