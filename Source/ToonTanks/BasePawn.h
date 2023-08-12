@@ -15,6 +15,10 @@ public:
 	// Sets default values for this pawn's properties
 	ABasePawn();
 
+protected:
+
+	void RotateTurret(FVector LookAtTarget);
+
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	class UCapsuleComponent* CapsuleComp;
@@ -31,4 +35,6 @@ private:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Super Duper Variables", meta = (AllowPrivateAccess = "true"))
 	int32 EditAnywhereInt = 22;
 	
+	UPROPERTY(EditAnywhere, Category = "Movement")
+	float TurretRotationSpeed = 20.f;
 };
