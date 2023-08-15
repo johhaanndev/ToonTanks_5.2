@@ -38,7 +38,7 @@ void ATank::Tick(float DeltaTime)
 			ECollisionChannel::ECC_Visibility, 
 			false, 
 			HitResult);
-
+		
 		RotateTurret(HitResult.ImpactPoint);
 	}
 }
