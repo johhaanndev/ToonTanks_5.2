@@ -10,9 +10,9 @@
 // Sets default values
 ABasePawn::ABasePawn()
 {
- 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-	
+
 	CapsuleComp = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Capsule Collider"));
 	RootComponent = CapsuleComp;
 
@@ -31,9 +31,13 @@ void ABasePawn::HandleDestruction()
 	// TODO: Visual/Sound effects
 	if (DeathParticles)
 	{
-		UGameplayStatics::SpawnEmitterAtLocation(this, DeathParticles, GetActorLocation(), GetActorRotation());
+		if (DeathParticles)
+			UGameplayStatics::SpawnEmitterAtLocation(this, DeathParticles, GetActorLocation(), GetActorRotation());
+
+		if (DeathSound)
+			UGameplayStatics::PlaySoundAtLocation(this, DeathSound, GetActorLocation());
 	}
-	
+
 }
 
 void ABasePawn::RotateTurret(FVector LookAtTarget)
@@ -45,9 +49,9 @@ void ABasePawn::RotateTurret(FVector LookAtTarget)
 		FMath::RInterpTo(
 			TurretMesh->GetComponentRotation(),
 			LookAtRotation,
-			UGameplayStatics::GetWorldDeltaSeconds(this), 
+			UGameplayStatics::GetWorldDeltaSeconds(this),
 			TurretRotationSpeed)
-		);
+	);
 }
 
 void ABasePawn::Fire()
